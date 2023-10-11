@@ -21,13 +21,15 @@ void bench(long i) {
     auto end = high_resolution_clock ::now();
     cout << r << " = fib(" << i << ")" << endl;
     auto duration = duration_cast<milliseconds>(end-start);
-    cout << duration << endl;
+    cout << duration.count() << "ms" << endl;
 }
 
 int main() {
     bench(10);
     bench(20);
     bench(40);
+    bench(42);
+    bench(45);
     bench(50);
     return 0;
 }
