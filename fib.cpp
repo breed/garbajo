@@ -21,8 +21,8 @@ void bench(long i) {
     auto r = fib(i);
     auto end = time(NULL);
     cout << r << " = fib(" << i << ")" << endl;
-    auto duration = duration_cast<milliseconds>(end-start);
-    cout << duration.count() << "ms" << endl;
+    auto duration = end-start;
+    cout << duration << "ms" << endl;
 }
 
 int main() {

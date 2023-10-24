@@ -23,7 +23,7 @@ public:
     //Function to determine whether the list is empty
     //Postcondition: Returns true if the list is empty;
     // otherwise, returns false.
-    bool isFull(bool printMessage = falsse) const;
+    bool isFull(bool printMessage = false) const;
 
     //Function to determine whether the list is full.
     //Postcondition: Returns true if the list is full;
@@ -97,6 +97,14 @@ public:
     //Postcondition: If the item is found, returns the location
     // in the array where the item is found; otherwise,
     // returns -1.
+
+    int binarySearch(const elemType &item, int start = 0, int end = -1) const;
+    //Function to binary search the list for a given item.
+    //Precondition: List is sorted
+    //Postcondition: If the item is found, returns the location
+    // in the array where the item is found; otherwise,
+    // returns -1.
+
     void insert(const elemType &insertItem);
 
     //Function to insert the item specified by the parameter
