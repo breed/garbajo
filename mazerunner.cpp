@@ -41,10 +41,36 @@ public:
         }
     }
     bool findpath(int row, int column, stack<Direction> &moves) {
+        // cout << "at " << row << ", " << column << " " << maze[row][column] << endl;
+        if (maze[row][column] == 'X') return true;
+        if (maze[row][column] == '#') return false;
+        if (maze[row][column] == '.') return false;
+        maze[row][column] = '.';
+        if (findpath(row+1, column, moves)) {
+            moves.push(south);
+            return true;
+        }
+        if (findpath(row-1, column, moves)) {
+            moves.push(north);
+            return true;
+        }
+        if (findpath(row, column+1, moves)) {
+            moves.push(east);
+            return true;
+        }
+        if (findpath(row, column-1, moves)) {
+            moves.push(west);
+            return true;
+        }
     }
 
     void printPath(int row, int column) {
         stack<Direction> moves;
+        for (int row = 0; row < Rows; row++) {
+            for (int col = 0; col < Rows; col++) {
+                if (maze[row][col] == '.') maze[row][col] = ' ';
+            }
+        }
         if (findpath(row, column, moves)) {
             cout << "found path from " << row << ", " << column << " to X: ";
             for (;!moves.empty(); moves.pop()) cout << dir2str(moves.top()) << " ";
