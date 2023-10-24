@@ -15,47 +15,22 @@ template <class elemType> arrayListType<elemType>::~arrayListType() {
 
 template <class elemType>
 void arrayListType<elemType>::insertEnd(const elemType &insertItem) {
-    /*
-    if (length == maxSize) {
-        maxSize *= 2;
-        auto newList = new elemType[maxSize];
-        for (int i = 0; i < length; i++) {
-            newList[i] = list[i];
-        }
-        auto oldList = list;
-        list = newList;
-        delete[] oldList;
-    }
-    */
-    if (isFull(true)) return;
-    list[length++] = insertItem;
+ 
 }
 
 template <class elemType>
 int arrayListType<elemType>::seqSearch(const elemType &item) const {
-    for (int i = 0; i < length; i++) {
-        if (list[i] == item) return i;
-    }
-    return -1;
+
 }
 
 template <class elemType>
 int arrayListType<elemType>::binarySearch(const elemType &item, int start, int end) const {
-    // cout << "searching " << start << " to " << end << endl;
-    if (end == -1) end = length;
-    if (end <= start) return -1;
-    int mid = start + (end-start)/2;
-    return list[mid] == item ? mid :
-        list[mid] < item ? binarySearch(item, mid+1, end) : binarySearch(item, start, mid);
+
 }
 
 template <class elemType>
 bool arrayListType<elemType>::isFull(bool printMessage) const {
-    if (length == maxSize) {
-        if (printMessage) cout << "list is full!" << endl;
-        return true;
-    }
-    return false;
+
 }
 
 
