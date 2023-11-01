@@ -15,17 +15,31 @@ template <class elemType> arrayListType<elemType>::~arrayListType() {
 
 template <class elemType>
 void arrayListType<elemType>::insertEnd(const elemType &insertItem) {
- 
+    if (length == maxSize) {
+        cout << "full!" << endl;
+        return;
+    }
+    list[length++] = insertItem;
 }
 
 template <class elemType>
 int arrayListType<elemType>::seqSearch(const elemType &item) const {
-
+    for (int i = 0; i < length; i++) {
+        if (list[i] == item) return i;
+    }
+    return -1;
 }
 
 template <class elemType>
 int arrayListType<elemType>::binarySearch(const elemType &item, int start, int end) const {
-
+    if (end == -1) end = length;
+    cout << "start " << start << " end " << end << endl;
+    if (start >= end) return -1;
+    int mid = start + (end-start)/2;
+    if (list[mid] == item) return mid;
+    if (list[mid] > item) end = mid;
+    else start = mid+1;
+    return binarySearch(item, start, end);
 }
 
 template <class elemType>
